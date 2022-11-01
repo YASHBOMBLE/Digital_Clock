@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Digital clock</title>
+    <style>
+        body {
+            background-color: blue;
+            padding: 30px;
+
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .container {
+            height: 200px;
+            padding: 20px;
+            color: aqua;
+            display: inline-block;
+        }
+
+        #clock {
+            font-size: 90px;
+            font-family: 'digital-clock-font';
+        }
+
+        span {
+            font-size: 40px;
+            color: gold;
+            margin-top: 28px;
+            font-weight: bold;
+            font-family: 'Times New Roman';
+        }
+
+        @font-face {
+            font-family: 'digital-clock-font';
+            src: url('./Technology-Bold.ttf');
+        }
+    </style>
+</head>
+
+<body>
+    <span>Digital clock</span>
+    <div class="main-container">
+        <div class="container">
+            <h1 id="clock"></h1>
+        </div>
+    </div>
+    <script>
+        setInterval(() => {
+            let name;
+            const d = new Date()
+            let hr = d.getHours()
+            let min = d.getMinutes()
+            let ss = d.getSeconds()
+
+            if (hr >= 12 && hr <= 24) {
+                name = 'PM'
+            }
+            else {
+                // if(hr>=00 && hr<=12)
+                name = 'AM'
+            }
+            document.getElementById('clock').innerHTML = hr   +" " + ":"+" " + min  +" " + ":"+" " + ss + " " + " "+" " + name;
+
+        })
+    </script>
+</body>
+
+</html>
