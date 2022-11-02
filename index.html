@@ -5,9 +5,9 @@
     <title>Digital clock</title>
     <style>
         body {
-            background-color: blue;
+            background-color: black;
             padding: 30px;
-
+            
         }
 
         .main-container {
@@ -19,56 +19,155 @@
         .container {
             height: 200px;
             padding: 20px;
-            color: aqua;
+            color: #17d4fe;
             display: inline-block;
+            
         }
 
         #clock {
             font-size: 90px;
             font-family: 'digital-clock-font';
-        }
-
-        span {
-            font-size: 40px;
-            color: gold;
-            margin-top: 28px;
-            font-weight: bold;
-            font-family: 'Times New Roman';
+           letter-spacing: 7px;
         }
 
         @font-face {
             font-family: 'digital-clock-font';
             src: url('./Technology-Bold.ttf');
         }
+
+
+      
+
+
+   
+
+
+	h1 {
+		height: 100px;
+	}
+
+	h1 span {
+		position: relative;
+		top: 20px;
+		display: inline-block;
+		animation: bounce .6s ease infinite alternate;
+		font-family: 'Titan One'cursive;
+		font-size: 40px;
+		color: gold;
+		text-shadow: 0 1px 0 green,
+			0 2px 0 green,
+			0 3px 0 green,
+			0 4px 0 green,
+			0 5px 0 green,
+			0 6px 0 transparent,
+			0 7px 0 transparent,
+			0 8px 0 transparent,
+			0 9px 0 transparent,
+			0 10px 10px rgba(0, 0, 0, 0.4);
+	}
+
+	h1 span:nth-child(2) {
+		animation-delay: .0.5s;
+	}
+
+	h1 span:nth-child(3) {
+		animation-delay: .2s;
+	}
+
+	h1 span:nth-child(4) {
+		animation-delay: .3s;
+	}
+
+	h1 span:nth-child(5) {
+		animation-delay: .4s;
+	}
+
+	h1 span:nth-child(6) {
+		animation-delay: .5s;
+	}
+
+	h1 span:nth-child(7) {
+		animation-delay: .6s;
+	}
+
+	h1 span:nth-child(8) {
+		animation-delay: .7s;
+	}
+
+	@keyframes bounce {
+		100% {
+			top: -20px;
+			text-shadow: 0 1px 0 #CCC,
+				0 2px 0 #CCC,
+				0 3px 0 #CCC,
+				0 4px 0 #CCC,
+				0 5px 0 #CCC,
+				0 6px 0 #CCC,
+				0 7px 0 #CCC,
+				0 8px 0 #CCC,
+				0 9px 0 #CCC,
+				0 50px 25px rgba(0, 0, 0, 0.2);
+		}
+	}
+
+
+ 
     </style>
 </head>
 
 <body>
-    <span>Digital clock</span>
+
+    <h1>
+        <span>D</span>
+        <span>I</span>
+        <span>G</span>
+        <span>T</span>
+        <span>A</span>
+        <span>L</span>&nbsp;&nbsp;&nbsp;&nbsp;
+        <span>C</span>
+        <span>L</span>
+        <span>O</span>
+        <span>C</span>
+        <span>K</span>
+       
+    </h1>
+
     <div class="main-container">
+       
         <div class="container">
             <h1 id="clock"></h1>
         </div>
     </div>
     <script>
         setInterval(() => {
-            let name;
+            let session;
             const d = new Date()
             let hr = d.getHours()
             let min = d.getMinutes()
             let ss = d.getSeconds()
-
+        
             if (hr >= 12 && hr <= 24) {
-                name = 'PM'
+                session = 'PM'
             }
             else {
                 // if(hr>=00 && hr<=12)
-                name = 'AM'
+                session = 'AM'
             }
-            document.getElementById('clock').innerHTML = hr   +" " + ":"+" " + min  +" " + ":"+" " + ss + " " + " "+" " + name;
+            if(hr>12)
+            {
+                hr=hr-12;
+            }
+            hr=(hr<10) ? "0" + hr : hr;
+            min=(min<10) ? "0" + min : min;
+            ss=(ss<10) ? "0" + ss : ss;
+          
+            document.getElementById('clock').innerHTML = hr   + ":" + min  + ":" + ss + " " + session;
+        
 
         })
     </script>
+    
+    </div>
 </body>
 
 </html>
